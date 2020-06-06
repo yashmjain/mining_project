@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "f8c093c5-5669-43d6-b3e6-ed7aaa1e4642",
+		"name": "real-time-location",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getVehicleInformation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"tagName\" :\"PC 6\",\n\t\"startDate\" :\"2019-11-12\",\n\t\"endDate\":\"2019-11-13\",\n\t\"startTime\":\"05:49:58\",\n\t\"endTime\":\"05:54:00\",\n\t\"size\":10,\n\t\"page\":1,\n\t\"sort\":\"NA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/vehicleinformation/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"vehicleinformation",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
