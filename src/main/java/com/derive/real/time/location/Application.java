@@ -9,9 +9,10 @@ package com.derive.real.time.location;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 
-
+@ComponentScan("com.derive.real.time.location")
 @SpringBootApplication
 public class Application {
 

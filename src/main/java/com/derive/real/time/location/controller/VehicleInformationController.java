@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.derive.real.time.location.service.VehicleInformationService;
 import com.derive.real.time.location.service.pojo.SearchVehicleInfoRequest;
-import com.derive.real.time.location.service.pojo.Tag;
+import com.derive.real.time.location.service.pojo.Tag_Log;
+import com.derive.real.time.location.service.pojo.VehicleInfoResponse;
 
 @RestController
 @RequestMapping(value = VehicleInformationController.ROOT)
@@ -50,13 +51,10 @@ public class VehicleInformationController {
 	    }
 	
 	@PostMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Tag>> getVehicleInformation(@RequestBody @Valid SearchVehicleInfoRequest searchPatchesRequest)
+	public ResponseEntity<VehicleInfoResponse> getVehicleInformation(@RequestBody @Valid SearchVehicleInfoRequest searchPatchesRequest)
 	{
-		List<Tag> tags = vehicleInfo.getVehicleInformation(searchPatchesRequest);
-		if (tags.isEmpty()) {
-        	return new ResponseEntity<>(HttpStatus.NO_CONTENT);	
-		}
-        return new ResponseEntity<>(tags, HttpStatus.OK);
+		VehicleInfoResponse vehicleRes = vehicleInfo.getVehicleInformation(searchPatchesRequest);		
+        return new ResponseEntity<>(vehicleRes, HttpStatus.OK);
 	}
 	
 	
