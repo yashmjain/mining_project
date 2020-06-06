@@ -30,25 +30,14 @@ public class VehicleInformationDAOImpl implements VehicleInformationDAO {
 		return nameParameterTemplate.query(query, new VehicleInfoRowMapper());
 	}
 
-	private static StringBuilder createWhereClause(SearchVehicleInfoRequest searchvehiclesDetail) {
-		StringBuilder whereclause = new StringBuilder(WHERE_CLAUSE);
-		String tagname = searchvehiclesDetail.getTagName();
-		Date startTime = searchvehiclesDetail.getStartTime();
-		Date endTime = searchvehiclesDetail.getEndTime();
+	private static String createWhereClause(SearchVehicleInfoRequest searchvehiclesDetail) {
+		String whereClause="WHERE TRACK_DATE BETWEEN "+searchvehiclesDetail.getStartDate() + "and " +
+	     searchvehiclesDetail.getEndDate() + " AND TRACK_TIME BETWEEN "+ searchvehiclesDetail.getStartTime()
+	     +"AND "+searchvehiclesDetail.getEndTime() +"AND TAG_NAME = "+searchvehiclesDetail.getTagName();
+	
+		return whereClause;
 
-		if (!tagname.isBlank()) {
-			appendCondition(whereclause, "tag", tagname);
-		}
-
-		// ToDo : Need to apply for StartDate and endDate
-
-		return whereclause;
-
-	}
-
-	private static StringBuilder appendCondition(StringBuilder existingclause, String key, String value) {
-		return existingclause.append(SPACE).append(key).append(EQUAL).append(value);
-	}
+	}	
 
 	class VehicleInfoRowMapper implements RowMapper<Tag> {
 
